@@ -6,7 +6,7 @@
     <title>Para una chica brillante ✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@1,900&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
     <style>
-        /* --- ESTILOS GENERALES --- */
+        /* --- TUS ESTILOS ORIGINALES --- */
         body {
             background-color: #fffde7;
             margin: 0; padding: 0;
@@ -18,19 +18,16 @@
             text-align: center;
         }
 
-        /* --- CÓDIGO DE LA FLOR (Escalada al 1.7 para ser 20% más grande) --- */
         .flower {
             height: 200px; width: 200px;
             display: flex; align-items: center; justify-content: center;
             position: relative;
-            /* Empezamos en 1.7 para que se vea más imponente */
             animation: pulsate 2s infinite;
             transition: opacity 1s ease;
             z-index: 10;
         }
 
         @keyframes pulsate {
-            /* Mantenemos las proporciones iguales al subir el tamaño */
             0%, 100% { transform: scale(1.7); } 
             50% { transform: scale(1.85); }
         }
@@ -43,101 +40,65 @@
         }
 
         .Petal1, .Petal2, .Petal3 { position: absolute; border-radius: 50%; }
-
         .Petal1 { left: 40px; z-index: 3; width: 120px; height: 30px; background: radial-gradient(circle, #ff5e00, #ffbb00); filter: drop-shadow(0 0 5px #e05200); }
-        .Petal1.p1 { transform: rotate(22.5deg); }
-        .Petal1.p2 { transform: rotate(67.5deg); }
-        .Petal1.p3 { transform: rotate(110.5deg); }
-        .Petal1.p4 { transform: rotate(157.5deg); }
-
+        .Petal1.p1 { transform: rotate(22.5deg); } .Petal1.p2 { transform: rotate(67.5deg); } .Petal1.p3 { transform: rotate(110.5deg); } .Petal1.p4 { transform: rotate(157.5deg); }
         .Petal2 { left: 0; z-index: 2; width: 200px; height: 40px; background: radial-gradient(circle, #ff5e00, #fbd702); filter: drop-shadow(0 0 5px #e05200); }
-        .Petal2.p2 { transform: rotate(90deg); }
-        .Petal2.p3 { transform: rotate(45deg); }
-        .Petal2.p4 { transform: rotate(135deg); }
-
+        .Petal2.p2 { transform: rotate(90deg); } .Petal2.p3 { transform: rotate(45deg); } .Petal2.p4 { transform: rotate(135deg); }
         .Petal3 { left: 0px; z-index: 1; width: 200px; height: 40px; background: radial-gradient(circle, #ff5e00, #fbd702); filter: drop-shadow(0 0 2px #fbd702); }
-        .Petal3.p1 { transform: rotate(22.5deg); }
-        .Petal3.p2 { transform: rotate(67.5deg); }
-        .Petal3.p3 { transform: rotate(110.5deg); }
-        .Petal3.p4 { transform: rotate(157.5deg); }
+        .Petal3.p1 { transform: rotate(22.5deg); } .Petal3.p2 { transform: rotate(67.5deg); } .Petal3.p3 { transform: rotate(110.5deg); } .Petal3.p4 { transform: rotate(157.5deg); }
 
-        /* --- TEXTOS PÁGINA 1 --- */
-        .text-above {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem; color: #5d4037;
-            margin-bottom: 95px; /* Ajustado por el nuevo tamaño de flor */
-            transition: opacity 0.8s;
-        }
+        .text-above { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: #5d4037; margin-bottom: 95px; transition: opacity 0.8s; }
+        .text-below { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: #5d4037; margin-top: 95px; transition: opacity 0.8s; }
 
-        .text-below {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem; color: #5d4037;
-            margin-top: 95px; 
-            transition: opacity 0.8s;
-        }
-
-        /* --- DISEÑO NOCTURNO (PÁGINA 2) --- */
         .step2-ui {
             position: absolute; top: 0; width: 100%; height: 100%;
             display: flex; flex-direction: column; align-items: center;
             opacity: 0; pointer-events: none; transition: 1.5s;
-            padding-top: 60px;
-            z-index: 20;
+            padding-top: 60px; z-index: 20;
         }
 
-        .sabes-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 5rem; color: #fbd702;
-            text-shadow: 2px 2px 15px rgba(251, 215, 2, 0.5);
-            margin: 0 0 20px 0; letter-spacing: 5px;
-        }
+        .sabes-title { font-family: 'Playfair Display', serif; font-size: 5rem; color: #fbd702; text-shadow: 2px 2px 15px rgba(251, 215, 2, 0.5); margin: 0 0 20px 0; letter-spacing: 5px; }
+        .message-body { font-family: 'Lora', serif; font-size: 1.4rem; color: #fff; line-height: 1.5; max-width: 85%; font-style: italic; margin-bottom: 15px; }
+        .te-quiero { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: #ff5252; }
 
-        .message-body {
-            font-family: 'Lora', serif; font-size: 1.4rem;
-            color: #fff; line-height: 1.5; max-width: 85%;
-            font-style: italic; margin-bottom: 15px;
-        }
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: 2s; background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px); background-size: 350px 350px, 200px 200px; }
+        .mini-flower { position: fixed; bottom: 20px; width: 40px; height: 40px; font-size: 40px; opacity: 0; transition: opacity 2s ease; z-index: 15; }
+        .flower-left { left: 30px; } .flower-right { right: 30px; }
 
-        .te-quiero {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem; color: #ff5252;
-        }
-
-        .stars {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; opacity: 0; transition: 2s;
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px);
-            background-size: 350px 350px, 200px 200px;
-        }
-
-        .mini-flower {
-            position: fixed; bottom: 20px;
-            width: 40px; height: 40px;
-            font-size: 40px; opacity: 0;
-            transition: opacity 2s ease;
-            z-index: 15;
-        }
-        .flower-left { left: 30px; }
-        .flower-right { right: 30px; }
-
-        .next-btn {
+        /* --- BOTONES (AHORA IDÉNTICOS) --- */
+        .next-btn, .next-btn-2 {
             position: fixed; bottom: 30px; right: 30px;
-            padding: 12px 30px; background: #ffb300;
+            padding: 12px 30px; background: #ffb300; /* Color original exacto */
             color: white; border: none; border-radius: 50px;
             font-weight: bold; cursor: pointer; z-index: 100;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-family: Arial, sans-serif;
         }
 
         /* --- LÓGICA DE TRANSICIÓN --- */
         body.night { background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); }
         body.night .stars { opacity: 1; }
         body.night .mini-flower { opacity: 0.7; }
-        body.night .flower { opacity: 0; pointer-events: none; }
-        body.night .text-above, body.night .text-below { opacity: 0; }
+        body.night .flower, body.night .text-above, body.night .text-below, body.night .next-btn { opacity: 0; pointer-events: none; }
         body.night .step2-ui { opacity: 1; pointer-events: auto; }
-        body.night .next-btn { display: none; }
+        
+        /* Mostrar el segundo botón solo en la noche */
+        .next-btn-2 { display: none; }
+        body.night .next-btn-2 { display: block; }
+
+        /* --- HOJA 3 (SAN VALENTÍN MEJORADA) --- */
+        .step3-ui {
+            position: absolute; top: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: 1.5s; z-index: 30;
+        }
+
+        .vday-title { font-family: 'Playfair Display', serif; font-size: 4rem; color: #d81b60; margin-bottom: 20px; }
+        .vday-message { font-family: 'Lora', serif; font-size: 1.3rem; color: #4e342e; line-height: 1.6; max-width: 80%; background: rgba(255, 255, 255, 0.8); padding: 25px; border-radius: 30px; }
+
+        body.vday { background: linear-gradient(to bottom, #f8bbd0, #fce4ec); }
+        body.vday .step2-ui, body.vday .stars, body.vday .next-btn-2 { opacity: 0; pointer-events: none; }
+        body.vday .step3-ui { opacity: 1; pointer-events: auto; }
 
     </style>
 </head>
@@ -145,17 +106,12 @@
     <div class="stars"></div>
 
     <div class="text-above">Para mi niña brillante...✨</div>
-
     <div class="flower">
         <div class="mid"></div>
-        <div class="Petal1 p1"></div><div class="Petal1 p2"></div>
-        <div class="Petal1 p3"></div><div class="Petal1 p4"></div>
-        <div class="Petal2 p1"></div><div class="Petal2 p2"></div>
-        <div class="Petal2 p3"></div><div class="Petal2 p4"></div>
-        <div class="Petal3 p1"></div><div class="Petal3 p2"></div>
-        <div class="Petal3 p3"></div><div class="Petal3 p4"></div>
+        <div class="Petal1 p1"></div><div class="Petal1 p2"></div><div class="Petal1 p3"></div><div class="Petal1 p4"></div>
+        <div class="Petal2 p1"></div><div class="Petal2 p2"></div><div class="Petal2 p3"></div><div class="Petal2 p4"></div>
+        <div class="Petal3 p1"></div><div class="Petal3 p2"></div><div class="Petal3 p3"></div><div class="Petal3 p4"></div>
     </div>
-
     <div class="text-below">Hay bellezas que iluminan el día...</div>
 
     <div class="step2-ui">
@@ -167,10 +123,21 @@
         <div class="te-quiero">Te quiero ❤️</div>
     </div>
 
+    <div class="step3-ui">
+        <h2 class="vday-title">¡Feliz 14 de febrero! ❤️</h2>
+        <div class="vday-message">
+            Feliz 14 de febrero, solo queria recordarte que, aunque el cielo tenga sus estrellas, ninguna brilla con la misma intensidad que tu. ✨ <br><br>
+            Eres una chica increible y hermosa. Esa belleza destaca a tu alrededor sin apenas esforzarte.. hoy estarè por la cinta costera de aqui cerquita, que hay fiesta por san valentin, ojala te sintieras mejor para ir..<br><br>
+            ...Si no pues bueno. Deseo que te mejores, recupérate pronto ❤️
+        </div>
+        <div class="te-quiero" style="font-size: 2.2rem; margin-top: 20px;">¡Eres increíble! ✨</div>
+    </div>
+
     <div class="mini-flower flower-left">🌸</div>
     <div class="mini-flower flower-right">🌸</div>
 
     <button class="next-btn" onclick="document.body.classList.add('night')">Siguiente ➜</button>
+    <button class="next-btn-2" onclick="document.body.classList.add('vday')">Siguiente ➜</button>
 
 </body>
 </html>
