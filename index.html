@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para una chica brillante ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@1,900&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        body {
+            background-color: #fffde7;
+            margin: 0; padding: 0;
+            height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            overflow: hidden;
+            transition: background 2s ease;
+            text-align: center;
+        }
+
+        /* --- CÓDIGO DE LA FLOR (Escalada al 1.7 para ser 20% más grande) --- */
+        .flower {
+            height: 200px; width: 200px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+            /* Empezamos en 1.7 para que se vea más imponente */
+            animation: pulsate 2s infinite;
+            transition: opacity 1s ease;
+            z-index: 10;
+        }
+
+        @keyframes pulsate {
+            /* Mantenemos las proporciones iguales al subir el tamaño */
+            0%, 100% { transform: scale(1.7); } 
+            50% { transform: scale(1.85); }
+        }
+
+        .mid {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: radial-gradient(circle, #000, #ff5e00, #000);
+            z-index: 4; background-size: 5px 5px;
+            filter: drop-shadow(0 0 8px #682600);
+        }
+
+        .Petal1, .Petal2, .Petal3 { position: absolute; border-radius: 50%; }
+
+        .Petal1 { left: 40px; z-index: 3; width: 120px; height: 30px; background: radial-gradient(circle, #ff5e00, #ffbb00); filter: drop-shadow(0 0 5px #e05200); }
+        .Petal1.p1 { transform: rotate(22.5deg); }
+        .Petal1.p2 { transform: rotate(67.5deg); }
+        .Petal1.p3 { transform: rotate(110.5deg); }
+        .Petal1.p4 { transform: rotate(157.5deg); }
+
+        .Petal2 { left: 0; z-index: 2; width: 200px; height: 40px; background: radial-gradient(circle, #ff5e00, #fbd702); filter: drop-shadow(0 0 5px #e05200); }
+        .Petal2.p2 { transform: rotate(90deg); }
+        .Petal2.p3 { transform: rotate(45deg); }
+        .Petal2.p4 { transform: rotate(135deg); }
+
+        .Petal3 { left: 0px; z-index: 1; width: 200px; height: 40px; background: radial-gradient(circle, #ff5e00, #fbd702); filter: drop-shadow(0 0 2px #fbd702); }
+        .Petal3.p1 { transform: rotate(22.5deg); }
+        .Petal3.p2 { transform: rotate(67.5deg); }
+        .Petal3.p3 { transform: rotate(110.5deg); }
+        .Petal3.p4 { transform: rotate(157.5deg); }
+
+        /* --- TEXTOS PÁGINA 1 --- */
+        .text-above {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem; color: #5d4037;
+            margin-bottom: 95px; /* Ajustado por el nuevo tamaño de flor */
+            transition: opacity 0.8s;
+        }
+
+        .text-below {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem; color: #5d4037;
+            margin-top: 95px; 
+            transition: opacity 0.8s;
+        }
+
+        /* --- DISEÑO NOCTURNO (PÁGINA 2) --- */
+        .step2-ui {
+            position: absolute; top: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center;
+            opacity: 0; pointer-events: none; transition: 1.5s;
+            padding-top: 60px;
+            z-index: 20;
+        }
+
+        .sabes-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem; color: #fbd702;
+            text-shadow: 2px 2px 15px rgba(251, 215, 2, 0.5);
+            margin: 0 0 20px 0; letter-spacing: 5px;
+        }
+
+        .message-body {
+            font-family: 'Lora', serif; font-size: 1.4rem;
+            color: #fff; line-height: 1.5; max-width: 85%;
+            font-style: italic; margin-bottom: 15px;
+        }
+
+        .te-quiero {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem; color: #ff5252;
+        }
+
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; opacity: 0; transition: 2s;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px);
+            background-size: 350px 350px, 200px 200px;
+        }
+
+        .mini-flower {
+            position: fixed; bottom: 20px;
+            width: 40px; height: 40px;
+            font-size: 40px; opacity: 0;
+            transition: opacity 2s ease;
+            z-index: 15;
+        }
+        .flower-left { left: 30px; }
+        .flower-right { right: 30px; }
+
+        .next-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            padding: 12px 30px; background: #ffb300;
+            color: white; border: none; border-radius: 50px;
+            font-weight: bold; cursor: pointer; z-index: 100;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- LÓGICA DE TRANSICIÓN --- */
+        body.night { background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); }
+        body.night .stars { opacity: 1; }
+        body.night .mini-flower { opacity: 0.7; }
+        body.night .flower { opacity: 0; pointer-events: none; }
+        body.night .text-above, body.night .text-below { opacity: 0; }
+        body.night .step2-ui { opacity: 1; pointer-events: auto; }
+        body.night .next-btn { display: none; }
+
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <div class="text-above">Para mi niña brillante...✨</div>
+
+    <div class="flower">
+        <div class="mid"></div>
+        <div class="Petal1 p1"></div><div class="Petal1 p2"></div>
+        <div class="Petal1 p3"></div><div class="Petal1 p4"></div>
+        <div class="Petal2 p1"></div><div class="Petal2 p2"></div>
+        <div class="Petal2 p3"></div><div class="Petal2 p4"></div>
+        <div class="Petal3 p1"></div><div class="Petal3 p2"></div>
+        <div class="Petal3 p3"></div><div class="Petal3 p4"></div>
+    </div>
+
+    <div class="text-below">Hay bellezas que iluminan el día...</div>
+
+    <div class="step2-ui">
+        <h2 class="sabes-title">¿SABES?</h2>
+        <p class="message-body">
+            Esa noche, cuando caminábamos saliendo del Centro Luso, busqué las estrellas y no vi ninguna...<br><br>
+            Ahí entendí que hasta el cielo te tiene respeto; ante alguien tan hermosa y brillante como tú, la Luna y las estrellas prefieren esconderse para no pasar pena.
+        </p>
+        <div class="te-quiero">Te quiero ❤️</div>
+    </div>
+
+    <div class="mini-flower flower-left">🌸</div>
+    <div class="mini-flower flower-right">🌸</div>
+
+    <button class="next-btn" onclick="document.body.classList.add('night')">Siguiente ➜</button>
+
+</body>
+</html>
